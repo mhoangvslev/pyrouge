@@ -24,10 +24,10 @@ class Rouge155(object):
         self._rouge_home = rouge_home
         self._rouge_bin = os.path.join(rouge_home, 'ROUGE-1.5.5.pl')
         if not os.path.exists(self._rouge_bin):
-            raise "Rouge binary not found at {}".format(self._rouge_bin)
+            raise EnvironmentError("Rouge binary not found at {}".format(self._rouge_bin))
         self._rouge_data = os.path.join(rouge_home, 'data')
         if not os.path.exists(self._rouge_data):
-            raise "Rouge data dir not found at {}".format(self._rouge_data)
+            raise EnvironmentError("Rouge data dir not found at {}".format(self._rouge_data))
 
     def _write_summary(self, summary, peers_dir):
         summary_filename = os.path.join(peers_dir, summary.id + ".html")
