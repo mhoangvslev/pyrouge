@@ -73,10 +73,10 @@ class Rouge155(object):
             output = output.decode("utf-8")
             return self._parse_output(output)
         except CalledProcessError as e:
-            print("Rouge returned a non-zero error code. Output was: ", file=sys.stderr)
-            print("BEGIN OUTPUT ", file=sys.stderr)
-            print(e.output, file=sys.stderr)
-            print("END OUTPUT", file=sys.stderr)
+            print >> sys.stderr, "Rouge returned a non-zero error code. Output was: "
+            print >> sys.stderr, "BEGIN OUTPUT "
+            print >> sys.stderr, e.output
+            print >> sys.stderr, "END OUTPUT"
             raise e
         finally:
             self._cleanup()
